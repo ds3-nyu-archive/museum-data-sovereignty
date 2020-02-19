@@ -16,7 +16,7 @@ Our pilot project examining over 4,000 public records on Native American cultura
 - Jane will develop a protocol for thinking and sharing about information, using appropriate terms.
 
 ## Dataset-Building Workflow
-Building Notices of Inventory Completion URL Dataset.ipynb builds a dataframe with the 2467 records in the Notices of Inventory table on the National Park Service website and calls urlgetter.py to add columns for JSON and full text URLs. The final result is saved as 'inv_urls.csv.'
+'Building Notices of Inventory Completion URL Dataset.ipynb' builds a dataframe with the 2467 records in the Notices of Inventory table on the National Park Service website, accessed 2/13/20. It then calls urlgetter.py to add columns for JSON and full text URLs. The final result is saved as 'inv_urls.csv.'
 
 Downloading_JSON.py [not yet created] will read in 'inv_urls.csv' and load fields of interest into the dataframe. It will save the result as 'inv_meta.csv.' This script should be flexible enough to work on the Notices of Intent to Repatriate dataset as well.
 
