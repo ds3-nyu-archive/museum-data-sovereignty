@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 
-def test_print:
-    print('hello world')
-    return
+print('in download_json')
+
+def test_print():
+    return 'hello world, i\'m the output from a function within download_json'
