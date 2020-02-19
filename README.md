@@ -14,3 +14,9 @@ Our pilot project examining over 4,000 public records on Native American cultura
 ## Goals
 - Museum studies class will think about ethical issues (sensitive reports, ancestors information...).
 - Jane will develop a protocol for thinking and sharing about information, using appropriate terms.
+
+## Dataset-Building Workflow
+Saving Notices of Inventory Completion.ipynb will call Downloading_JSON.py and Downloading_fulltext.py.
+Download_JSON.py will take in page source HTML for Notice of Inventory in Federal Register, and return a 1x?  numpy array with JSON metadata for single record.
+Downloading_fulltext.py will will take in page source HTML for Notice of Inventory in Federal Register, and return a 1x? numpy array with full-text for single record.
+Saving Notices of Inventory Completion.ipynb will take the outputs from Downloading_JSON.py and Downloading_fulltext.py to build a dataframe.
