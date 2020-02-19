@@ -15,6 +15,15 @@ Our pilot project examining over 4,000 public records on Native American cultura
 - Museum studies class will think about ethical issues (sensitive reports, ancestors information...).
 - Jane will develop a protocol for thinking and sharing about information, using appropriate terms.
 
+
+## Datasets
+'inventories_nps.csv' - Records of inventories for which notices have not been published in the Federal Register. Downloaded from https://www.nps.gov/subjects/nagpra/inventories-database.htm 2/13/20.
+
+'inv_urls' - Contains Title, Publication Date, JSON URL, and full-text URL, for each Notice of Inventory Completion in the National Park Service website. Built in 'Building Notices of Inventory Completion URL Dataset.ipynb' with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-inventory-completion.htm 2/13/20.  
+
+'fedreg_notices_of_inventory.csv' - Truncated: only contains 1000 records. Details in 'Building Notices of Inventory Completion URL Dataset.ipynb.' Downloaded from https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=national-park-service&conditions%5Bterm%5D=%22Inventory+Completion%22&conditions%5Btype%5D%5B%5D=NOTICE 2/13/20.
+
+
 ## Dataset-Building Workflow
 'Building Notices of Inventory Completion URL Dataset.ipynb' builds a dataframe with the 2467 records in the Notices of Inventory table on the National Park Service website, accessed 2/13/20. It then calls urlgetter.py to add columns for JSON and full text URLs. The final result is saved as 'inv_urls.csv.'
 
