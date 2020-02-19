@@ -16,7 +16,12 @@ Our pilot project examining over 4,000 public records on Native American cultura
 - Jane will develop a protocol for thinking and sharing about information, using appropriate terms.
 
 ## Dataset-Building Workflow
-Saving Notices of Inventory Completion.ipynb will call Downloading_JSON.py and Downloading_fulltext.py.
-Download_JSON.py will take in page source HTML for Notice of Inventory in Federal Register, and return a 1x?  numpy array with JSON metadata for single record.
-Downloading_fulltext.py will will take in page source HTML for Notice of Inventory in Federal Register, and return a 1x? numpy array with full-text for single record.
-Saving Notices of Inventory Completion.ipynb will take the outputs from Downloading_JSON.py and Downloading_fulltext.py to build a dataframe.
+Building Notices of Inventory Completion URL Dataset.ipynb builds a dataframe with the 2467 records in the Notices of Inventory table on the National Park Service website and calls urlgetter.py to add columns for JSON and full text URLs. The final result is saved as 'inv_urls.csv.'
+
+Downloading_JSON.py [not yet created] will read in 'inv_urls.csv' and load fields of interest into the dataframe. It will save the result as 'inv_meta.csv.' This script should be flexible enough to work on the Notices of Intent to Repatriate dataset as well.
+
+Downloading_fulltext.py [not yet created on master] will read in 'inv_urls.csv' and load the full text into the dataframe. It will save the result as 'inv_full.csv.' This script should be flexible enough to work on the Notices of Intent to Repatriate dataset as well.
+
+The results of Downloading_JSON.py and Downloading_fulltext.py could eventually be merged. We should keep the index consistent in case we keep them as separate tables.
+
+This process will be repeated for Notices of Intent to Repatriate.
