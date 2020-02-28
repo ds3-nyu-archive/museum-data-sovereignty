@@ -1,11 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.py[cod]
+*$py.class
 
-__pycache__/Download_JSON.cpython-37.pyc
-.ipynb_checkpoints/Building Notices of Inventory Completion URL Dataset-checkpoint.ipynb
-.ipynb_checkpoints/Saving Notices of Inventory Completion-checkpoint.ipynb
-.ipynb_checkpoints/Saving Notices of Inventory Completion-checkpoint.ipynb
-.DS_Store
-.ipynb_checkpoints/Saving Notices of Inventory Completion-checkpoint.ipynb
-.ipynb_checkpoints/Saving Notices of Inventory Completion-checkpoint.ipynb
-src/notebooks/.ipynb_checkpoints/Building Notices of Inventory Completion URL Dataset-checkpoint.ipynb
-.DS_Store
-src/notebooks/.ipynb_checkpoints/Full Text Pulling and Parsing-checkpoint.ipynb
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+*.egg
+MANIFEST
+
+# MacOS files
+**/.DS_Store
+
+# Notebooks checkpoints
+**/.ipynb_checkpoints/
