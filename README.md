@@ -29,7 +29,7 @@ Our pilot project examining over 4,000 public records on Native American cultura
 
 Downloading_JSON.py [not yet created] will read in 'inv_urls.csv' and load fields of interest into the dataframe. It will save the result as 'inv_meta.csv.' This script should be flexible enough to work on the Notices of Intent to Repatriate dataset as well.
 
-Downloading_fulltext.py [not yet created on master] will read in 'inv_urls.csv' and load the full text into the dataframe. It will save the result as 'inv_full.csv.' This script should be flexible enough to work on the Notices of Intent to Repatriate dataset as well.
+Downloading_fulltext.py [not yet created on master] will read in 'inv_urls.csv' and load the full text into the dataframe. It will save the result as 'inv_full.csv.' This script should be flexible enough to work on the Notices of Intent to Repatriate dataset as well. Working draft in 'Full Text Pulling and Parsing.ipynb.'
 
 The results of Downloading_JSON.py and Downloading_fulltext.py could eventually be merged. We should keep the index consistent in case we keep them as separate tables.
 
