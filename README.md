@@ -19,18 +19,30 @@ Our pilot project examining over 4,000 public records on Native American cultura
 ## Datasets
 'inventories_nps.csv' - Records of inventories for which notices have not been published in the Federal Register. Downloaded from https://www.nps.gov/subjects/nagpra/inventories-database.htm 2/13/20.
 
-'inv_urls' - Contains Title, Publication Date, JSON URL, and full-text URL, for each Notice of Inventory Completion in the National Park Service website. Built in 'Building Notices of Inventory Completion URL Dataset.ipynb' with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-inventory-completion.htm 2/13/20.  
+'inv_urls' - Contains Title, Publication Date, JSON URL, and full-text URL, for each Notice of Inventory Completion in the National Park Service website. Built in 'Building Notices of Inventory Completion URL Dataset.ipynb' with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-inventory-completion.htm 2/13/20. Unique keys created via 'indexing.py' by appending "I_" to the dataframe's index.
 
-'fedreg_notices_of_inventory.csv' - Truncated: only contains 1000 records. Details in 'Building Notices of Inventory Completion URL Dataset.ipynb.' Downloaded from https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=national-park-service&conditions%5Bterm%5D=%22Inventory+Completion%22&conditions%5Btype%5D%5B%5D=NOTICE 2/13/20.
+'repatriation_urls' - Contains Title, Publication Date, JSON URL, and full-text URL, for each Notice of Intent to Repatriate in the National Park Service website. Built in 'Building Notices Of Repatriation Dataset.ipynb' with data accessed from [url] on [date]. Unique keys created via 'indexing.py' by appending "R_" to the dataframe's index.
+
+'notices_of_repatriation.csv' - [description] [source/url] [download date]
+
+'fedreg_notices_of_inventory.csv' - Truncated: only contains 1000 records. Details in 'Building Notices of Inventory Completion URL Dataset.ipynb' Downloaded from https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=national-park-service&conditions%5Bterm%5D=%22Inventory+Completion%22&conditions%5Btype%5D%5B%5D=NOTICE 2/13/20.
+
+'datasets/downloaded_entries/fulltext' - Contains individual JSON files with the full-text of each entry in 'inv_urls' and 'repatriation_urls.' Includes 'index' field with key. Downloaded via 'main.py' and 'downloading_fulltext.py' 3/20-21/20.
+
+'datasets/downloaded_entries/metadata' - Contains individual JSON files with the metadata of each entry in 'inv_urls' and 'repatriation_urls.' Does not include index field; may need to be updated to include key. Downloaded via 'main.py' and 'downloading_metadata.py' 3/20/20.
 
 
-## Dataset-Building Workflow
+## Scripts and Notebooks
 'Building Notices of Inventory Completion URL Dataset.ipynb' builds a dataframe with the 2467 records in the Notices of Inventory table on the National Park Service website, accessed 2/13/20. It then calls urlgetter.py to add columns for JSON and full text URLs. The final result is saved as 'inv_urls.csv.'
 
-Downloading_JSON.py [not yet created] will read in 'inv_urls.csv' and load fields of interest into the dataframe. It will save the result as 'inv_meta.csv.' This script should be flexible enough to work on the Notices of Intent to Repatriate dataset as well.
+'Building Notices Of Repatriation Dataset.ipynb' [functional explanation]
 
-Downloading_fulltext.py [not yet created on master] will read in 'inv_urls.csv' and load the full text into the dataframe. It will save the result as 'inv_full.csv.' This script should be flexible enough to work on the Notices of Intent to Repatriate dataset as well. Working draft in 'Full Text Pulling and Parsing.ipynb.'
+'indexing.py' takes the index of 'inv_urls.csv,' appends each entry with 'I_,' and saves this key as a new column called 'key.' The resulting dataframe is saved to 'inv_urls.csv.' It does the same to 'repatriation_urls.csv' using 'R_' as the prefix for the key.
 
-The results of Downloading_JSON.py and Downloading_fulltext.py could eventually be merged. We should keep the index consistent in case we keep them as separate tables.
+'main.py' takes 2 arguments, task and dataset. If the dataset argument is given as 'inventory,' the script reads in 'inv_urls.csv.' If the dataset argument is given as 'repatriation,' the script reads in 'repatriation_urls.csv.' If the task argument is given as 'fulltext,' the script passes each entry's key and full-text URL to 'downloading_fulltext.py.' If the task argument is given as 'metadata,' the script passes each entry's key and JSON URL to 'downloading_json.py.'
 
-This process will be repeated for Notices of Intent to Repatriate.
+'downloading_metadata.py' takes in a URL and a key, and saves a JSON file with the metadata in 'datasets/downloaded_entries/metadata.'
+
+'downloading_fulltext.py' takes in a URL and a key, and saves a JSON file with the full-text in 'datasets/downloaded_entries/fulltext.'
+
+'data_retrieval.py' takes in a URL and returns the page's HTML.
