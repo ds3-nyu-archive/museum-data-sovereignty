@@ -1,14 +1,23 @@
 from bs4 import BeautifulSoup
 import json
+import pathlib
+from os import path
 from data_retrieval import open_url
 
-def save_fulltext(html, index):
+def save_fulltext(url, index):
     
     '''
-    Takes in full-text XML file and index.
+    Takes in fulltext URL and index.
     Saves .json file with full-text, in unparsed format and separated by heading.
     '''
     
+    file_name = index+'.json'
+    file_path = pathlib.Path.cwd().parent / 'datasets' / 'downloaded_entries'/ 'fulltext' /file_name
+
+    if path.exists(file_path):
+        return
+
+    html = open_url(url)
     soup = BeautifulSoup(html, 'xml')
     
     # get full text, not seperated by heading
@@ -33,6 +42,7 @@ def save_fulltext(html, index):
     supp_info = 'Null'
     consultation = 'Null'
     h_d_r = 'Null'
+    h_d_ci = 'Null'
     determinations = 'Null'
     a_r_d = 'Null'
     
@@ -114,6 +124,20 @@ def save_fulltext(html, index):
                             #should debug this with example
                                 break
                         h_d_r+=a.get_text()+' \n '
+
+                if 'history and description of the cultural items' in x.string.lower():
+                    h_d_ci = ''
+                    after_hdci = [x for x in list(x.next_siblings) if x.name=='P' or x.name=='HD']
+                    for a in after_hdci:
+                        if a.name=='P': 
+                            h_d_ci+=a.get_text()+' \n '
+                            continue
+                        if 'SOURCE' in a.attrs:
+                            if a['SOURCE'] == "HD1":
+                            #assume that "HD1" would mark new section
+                            #should debug this with example
+                                break
+                        h_d_ci+=a.get_text()+' \n '
                         
                 if 'determinations made by' in x.string.lower():
                     determinations = x.get_text()+' \n ' #include heading because varies based on institution
@@ -150,12 +174,9 @@ def save_fulltext(html, index):
             'signature_dated': signature_dated, 'signature_name': signature_name, 
             'signature_title': signature_title, 
             'fr_doc': fr_doc, 'billing_code': billing_code, 'supp_info': supp_info, 
-            'consultation': consultation, 'h_d_r': h_d_r, 
+            'consultation': consultation, 'h_d_r': h_d_r, 'h_d_ci': h_d_ci,
             'determinations': determinations, 'a_r_d': a_r_d}
 
-    file_name = index+'.json'
-    file_path = pathlib.Path.cwd().parent / 'datasets' / 'downloaded_entries'/ 'inv_fulltext' /file_name
     with open(file_path, 'w', encoding='utf-8') as f:
         json.dump(entry, f, ensure_ascii=False)               
     return 
-
