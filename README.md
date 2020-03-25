@@ -46,3 +46,19 @@ Our pilot project examining over 4,000 public records on Native American cultura
 'downloading_fulltext.py' takes in a URL and a key, and saves a JSON file with the full-text in 'datasets/downloaded_entries/fulltext.'
 
 'data_retrieval.py' takes in a URL and returns the page's HTML.
+
+
+### Execution
+The data retrieval process must be launched from the Command Line Interface (CLI).
+
+#### Commands
+Specify what information you want to retrieve by using commands {`fulltext` | `metadata`}.
+
+#### Arguments
+Once a command is selected, specify the URLs dataset file using the `--dataset` syntax.
+
+Examples:
+```shell script
+python3 src/main.py fulltext --dataset inventory
+python3 src/main.py fulltext --dataset repatriation
+```
