@@ -17,18 +17,18 @@ Our pilot project examining over 4,000 public records on Native American cultura
 
 
 ## Datasets
-### datasets/downloaded_entries/fulltext/
+#### datasets/downloaded_entries/fulltext/
 Holds 3282 individual JSON files with the full-text of each entry in inv_urls.csv and repatriation_urls.csv from the URLs stored in 'fulltext_url.' Includes 'index' field with primary key. Downloaded via main.py and downloading_fulltext.py, 3/20/20 - 3/21/20.
 
-### datasets/downloaded_entries/metadata/
+#### datasets/downloaded_entries/metadata/
 Holds 3282 individual JSON files with the metadata of each entry in inv_urls.csv and repatriation_urls.csv from the URLs stored in 'json_url.' Includes 'index' field with primary key. Downloaded via main.py and downloading_metadata.py, 04/02/20.
 
-### fedreg_notices_of_inventory.csv
+#### fedreg_notices_of_inventory.csv
 Notices of Inventory Completion, as downloaded directly from the Federal Register. Truncated; does not contain all records. Details in Building Notices of Inventory Completion URL Dataset.ipynb. Downloaded from https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=national-park-service&conditions%5Bterm%5D=%22Inventory+Completion%22&conditions%5Btype%5D%5B%5D=NOTICE on 2/13/20.<br/>
 **Rows: 1000**<br/>
 **Columns:'title', 'type', 'agency_names', 'abstract', 'document_number', 'html_url', 'pdf_url', 'publication_date'**
 
-### fulltext.csv
+#### fulltext.csv
 Full-text of Notices of Inventory Completion and Notices of Intent to Repatriate, compiled from files in datasets/downloaded_entries/fulltext/ via main.py on 04/03/20. Three records have been removed because they were not relevant to NAGPRA. See Cleaning inv_url Title.ipynb for details on record removal. See downloading_fulltext.py for details on attribute construction. The string "Null" is the null value placeholder. <br/>
 **Rows: 3279**<br/>
 **'messy_full'** - Type: str. Broad, catch-call category that contains all text present in notice, for all documents in the dataset. Except for 'key,' all other attributes ought to be subsets of this one.<br/>
@@ -54,13 +54,13 @@ Full-text of Notices of Inventory Completion and Notices of Intent to Repatriate
 **'a_r_d'** - Type: str. Additional Requestors and Disposition. Begins after "Additional Requestors and Disposition" heading within Supplementary Information, if present. "Requesters" is also accepted. Next paragraphs and headings all concatenated, separated by newline charactesr, until next Heading 1. Note that these formatting assumptions may be unsafe. This attribute has not been rigorously tested, and may be missing or partial, even in XML documents. Will be "Null" in old basic text documents. All information should be preserved in 'messy_full.'<br/>
 **'key'** - Type: str. Unique primary key consistent with fulltext.pckl.gz, metadata.pckl.gz, metadata.csv, inv_urls.csv, and repatriation_urls.csv.<br/>
 
-### fulltext.pckl.gz
+#### fulltext.pckl.gz
 Pandas DataFrame holding the data from 'fulltext.csv,' pickled with gzip compression. Index has been set to 'key.'<br/>
 **Rows: 3279**<br/>
 **Columns: 'messy_full', 'agency1', 'sub_agency1', 'dep_doc', 'subject', 'agency2', 'action', 'summary', 'dates', 'addresses', 'signature_dated', 'signature_name', 'signature_title', 'fr_doc', 'billing_code', 'supp_info', 'consultation', 'h_d_r', 'h_d_ci', 'determinations', 'a_r_d'**
 
 
-### inv_urls
+#### inv_urls
 Each row represents one Notice of Inventory Completion published in the Federal Register and logged in the National Park Service website. Built in 'Building Notices of Inventory Completion URL Dataset.ipynb' with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-inventory-completion.htm 2/13/20. (Source URL: https://www.nps.gov/common/uploads/sortable_dataset/nagpra/F8663396-E1B9-7C54-8C15C08D2D0702C4/F8663396-E1B9-7C54-8C15C08D2D0702C4.json.) Unique keys created via 'indexing.py' by appending "I_" to the dataframe's index. Three records have been removed because they were not relevant to NAGPRA (see 'Cleaning inv_url Title.ipynb').<br/>
 **Rows: 2464**<br/>
 **'Publication Date'** - Type: str. Original column from NPS. Format: m/d/yyy<br/>
@@ -74,27 +74,27 @@ Each row represents one Notice of Inventory Completion published in the Federal 
 **'State'** - Type: str. U.S. state where 'Institution' is located, as derived from 'Title.'  Format: 2-letter abbreviation. Added via 'Cleaning inv_url Title.ipynb.'<br/>
 **'Correction'** - Type: int. Correction status, as derived from 'Title.' Value of 0 indicates that notice is not a correction. Value of 1 indicates a first correction. Value of 2 indicates a second correction. Has not been checked against Federal Register documents or MODS. Added via 'Cleaning inv_url Title.ipynb.'
 
-### inventories_nps.csv
+#### inventories_nps.csv
 Records of inventories for which notices have not been published in the Federal Register. Downloaded from https://www.nps.gov/subjects/nagpra/inventories-database.htm 2/13/20.<br/>
 **Rows: 14825**<br/>
 **Columns: 'State', 'Museum or Federal Agency', 'MNI', 'AFO', 'CA', 'CUI', 'Geographic Area', 'County'**
 
-### metadata.csv
+#### metadata.csv
 Metadata for Notices of Inventory Completion and Notices of Intent to Repatriate, compiled from files in datasets/downloaded_entries/metadata/ via main.py on 04/03/20. Three records have been removed because they were not relevant to NAGPRA. See Cleaning inv_url Title.ipynb for details on record removal. All columns are original to Federal Register metadata, except for 'key,' which is a unique primary key consistent with metadata.pckl.gz, fulltext.csv, fulltext.pckl.gz, inv_urls.csv, and repatriation_urls.csv.<br/>
 **Rows: 3279**<br/>
-**Columns:'abstract', 'action', 'agencies', 'body_html_url', 'cfr_references', 'citation', 'comment_url', 'comments_close_on', 'correction_of', 'corrections', 'dates', 'disposition_notes', 'docket_ids', 'document_number', 'effective_on', 'end_page', 'executive_order_notes', 'executive_order_number', 'full_text_xml_url', 'html_url', 'images', 'json_url', 'mods_url', 'page_length', 'page_views', 'pdf_url', 'presidential_document_number', 'proclamation_number', 'public_inspection_pdf_url', 'publication_date', 'raw_text_url', 'regulation_id_number_info', 'regulation_id_numbers', 'regulations_dot_gov_info', 'regulations_dot_gov_url', 'significant', 'signing_date', 'start_page', 'subtype', 'title', 'toc_doc', 'toc_subject', 'topics', 'type', 'volume', 'key'**
+**Columns: 'abstract', 'action', 'agencies', 'body_html_url', 'cfr_references', 'citation', 'comment_url', 'comments_close_on', 'correction_of', 'corrections', 'dates', 'disposition_notes', 'docket_ids', 'document_number', 'effective_on', 'end_page', 'executive_order_notes', 'executive_order_number', 'full_text_xml_url', 'html_url', 'images', 'json_url', 'mods_url', 'page_length', 'page_views', 'pdf_url', 'presidential_document_number', 'proclamation_number', 'public_inspection_pdf_url', 'publication_date', 'raw_text_url', 'regulation_id_number_info', 'regulation_id_numbers', 'regulations_dot_gov_info', 'regulations_dot_gov_url', 'significant', 'signing_date', 'start_page', 'subtype', 'title', 'toc_doc', 'toc_subject', 'topics', 'type', 'volume', 'key'**
 
-### metadata.pckl.gz
+#### metadata.pckl.gz
 Pandas DataFrame holding the data from 'metadata.csv,' pickled with gzip compression. Index has been set to 'key.'<br/>
 **Rows: 3279**<br/>
-**Columns:'abstract', 'action', 'agencies', 'body_html_url', 'cfr_references', 'citation', 'comment_url', 'comments_close_on', 'correction_of', 'corrections', 'dates', 'disposition_notes', 'docket_ids', 'document_number', 'effective_on', 'end_page', 'executive_order_notes', 'executive_order_number', 'full_text_xml_url', 'html_url', 'images', 'json_url', 'mods_url', 'page_length', 'page_views', 'pdf_url', 'presidential_document_number', 'proclamation_number', 'public_inspection_pdf_url', 'publication_date', 'raw_text_url', 'regulation_id_number_info', 'regulation_id_numbers', 'regulations_dot_gov_info', 'regulations_dot_gov_url', 'significant', 'signing_date', 'start_page', 'subtype', 'title', 'toc_doc', 'toc_subject', 'topics', 'type', 'volume'**
+**Columns: 'abstract', 'action', 'agencies', 'body_html_url', 'cfr_references', 'citation', 'comment_url', 'comments_close_on', 'correction_of', 'corrections', 'dates', 'disposition_notes', 'docket_ids', 'document_number', 'effective_on', 'end_page', 'executive_order_notes', 'executive_order_number', 'full_text_xml_url', 'html_url', 'images', 'json_url', 'mods_url', 'page_length', 'page_views', 'pdf_url', 'presidential_document_number', 'proclamation_number', 'public_inspection_pdf_url', 'publication_date', 'raw_text_url', 'regulation_id_number_info', 'regulation_id_numbers', 'regulations_dot_gov_info', 'regulations_dot_gov_url', 'significant', 'signing_date', 'start_page', 'subtype', 'title', 'toc_doc', 'toc_subject', 'topics', 'type', 'volume'**
 
-### notices_of_repatriation.csv
+#### notices_of_repatriation.csv
 Downloaded via https://www.nps.gov/subjects/nagpra/notices-of-intent-to-repatriate.htm on [date]. (Source URL: [url].)<br/>
 **Rows: 815**<br/>
 **Columns: 'Publication Date', 'Title', 'Link'**
 
-### repatriation_urls
+#### repatriation_urls
 Each row represents one Notice of Intent to Repatriate published in the Federal Register and logged in the National Park Service website. Built using notices_of_repatriation.csv via 'Building Notices of Repatriation Dataset.ipynb' on [date]. Unique keys created via 'indexing.py' by appending "R_" to the dataframe's index.<br/>
 **Rows: 815**<br/>
 **'Publication Date'** - Type: str. Original column from NPS. Format: m/d/yyy<br/>
