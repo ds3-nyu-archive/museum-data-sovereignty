@@ -143,16 +143,16 @@ Takes in a URL and returns the page's HTML.
 Parses HTML to return URLs of interest.
 
 #### json keys.ipynb
-Loads sample notices via Federal Register API and explores metadata keys
+Loads sample notices via Federal Register API and explores metadata keys.
 
 
 ## Results and Findings
 
 #### NAGPRA Database Schema.pdf
-Map of NAGPRA databases
+Map of NAGPRA databases.
 
 #### NAGPRA Database Constellation.key
-Slidedeck with information on NAGPRA databases
+Slidedeck with information on NAGPRA databases.
 
 #### Repeated_Values_Report.pdf
 Report on unexpected text recycling in Notices of Inventory Completion and Notices of Intent to Repatriate.
