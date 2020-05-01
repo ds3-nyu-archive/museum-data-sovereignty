@@ -24,55 +24,55 @@ Contains individual JSON files with the full-text of each entry in 'inv_urls' an
 Contains individual JSON files with the metadata of each entry in 'inv_urls' and 'repatriation_urls.' Includes 'index' field with primary key. Downloaded via 'main.py' and 'downloading_metadata.py' 04/02/20.
 
 ### fedreg_notices_of_inventory.csv
-Notices of Inventory Completion, as downloaded directly from the Federal Register. Truncated; does not contain all records. Details in 'Building Notices of Inventory Completion URL Dataset.ipynb.' Downloaded from https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=national-park-service&conditions%5Bterm%5D=%22Inventory+Completion%22&conditions%5Btype%5D%5B%5D=NOTICE 2/13/20.
-**Rows: 1000**
+Notices of Inventory Completion, as downloaded directly from the Federal Register. Truncated; does not contain all records. Details in 'Building Notices of Inventory Completion URL Dataset.ipynb.' Downloaded from https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=national-park-service&conditions%5Bterm%5D=%22Inventory+Completion%22&conditions%5Btype%5D%5B%5D=NOTICE 2/13/20.<br/>
+**Rows: 1000**<br/>
 **Columns:'title', 'type', 'agency_names', 'abstract', 'document_number', 'html_url', 'pdf_url', 'publication_date'**
 
 ### fulltext.pckl.gz
-Pickled Pandas DataFrame compiled from inventory and repatriation files in 'datasets/downloaded_entries/fulltext' 04/03/20. Three records have been removed because they were not relevant to NAGPRA (see 'Cleaning inv_url Title.ipynb').
-**Rows:**
+Pickled Pandas DataFrame compiled from inventory and repatriation files in 'datasets/downloaded_entries/fulltext' 04/03/20. Three records have been removed because they were not relevant to NAGPRA (see 'Cleaning inv_url Title.ipynb').<br/>
+**Rows:**<br/>
 **Columns:**
 
 ### inv_urls
-Each row represents one Notice of Inventory Completion published in the Federal Register and logged in the National Park Service website. Built in 'Building Notices of Inventory Completion URL Dataset.ipynb' with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-inventory-completion.htm 2/13/20. (Source URL: https://www.nps.gov/common/uploads/sortable_dataset/nagpra/F8663396-E1B9-7C54-8C15C08D2D0702C4/F8663396-E1B9-7C54-8C15C08D2D0702C4.json.) Unique keys created via 'indexing.py' by appending "I_" to the dataframe's index. Three records have been removed because they were not relevant to NAGPRA (see 'Cleaning inv_url Title.ipynb').
-**Rows: 2464**
-**Columns:**
-**'Publication Date'** - Type: str. Original column from NPS. Format: m/d/yyy
-**'Title'** - Type: str. Original column from NPS. Standard format: [Institution], [City], [State, 2-letter abbreviation]. Format for older records: "Notice of Inventory Completion for Native American Human Remains and Associated Funerary Objects from [Geographic region of provenance] in the Possession of [Institution in Possession], [City], [State, 2-letter abbreviation], and in the Control of [Controlling Institution]"
-**'Link'** - Type: str. Original column from NPS. Link to Federal Register document.
-**'json_url'** - Type: str. Link to metadata in JSON format. Added via 'Building Notices of Inventory Completion URL Dataset.ipynb'. 
-**'fulltext_url'** - Type: str. Link to full-text data stored in XML or basic text format. Added via 'Building Notices of Inventory Completion URL Dataset.ipynb'. 
-**'key'** - Type: str. Primary key. Begins with 'I_' to distiguish from Notices of Intent to Repatriate. Added via 'indexing.py.' Number following 'I_' no longer matches iloc, records have been removed.
-**'Institution'** - Type: str. Partially processed institutional information from 'Title.' Added via 'Cleaning inv_url Title.ipynb.' See notebook for outstanding issues.
-**'City'** - Type: str. Partially processed information on location of 'Institution,' as derived from 'Title.' Added via 'Cleaning inv_url Title.ipynb.' See notebook for outstanding issues.
-**'State'** - Type: str. U.S. state where 'Institution' is located, as derived from 'Title.'  Format: 2-letter abbreviation. Added via 'Cleaning inv_url Title.ipynb.'
+Each row represents one Notice of Inventory Completion published in the Federal Register and logged in the National Park Service website. Built in 'Building Notices of Inventory Completion URL Dataset.ipynb' with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-inventory-completion.htm 2/13/20. (Source URL: https://www.nps.gov/common/uploads/sortable_dataset/nagpra/F8663396-E1B9-7C54-8C15C08D2D0702C4/F8663396-E1B9-7C54-8C15C08D2D0702C4.json.) Unique keys created via 'indexing.py' by appending "I_" to the dataframe's index. Three records have been removed because they were not relevant to NAGPRA (see 'Cleaning inv_url Title.ipynb').<br/>
+**Rows: 2464**<br/>
+**Columns:**<br/>
+**'Publication Date'** - Type: str. Original column from NPS. Format: m/d/yyy<br/>
+**'Title'** - Type: str. Original column from NPS. Standard format: [Institution], [City], [State, 2-letter abbreviation]. Format for older records: "Notice of Inventory Completion for Native American Human Remains and Associated Funerary Objects from [Geographic region of provenance] in the Possession of [Institution in Possession], [City], [State, 2-letter abbreviation], and in the Control of [Controlling Institution]"<br/>
+**'Link'** - Type: str. Original column from NPS. Link to Federal Register document.<br/>
+**'json_url'** - Type: str. Link to metadata in JSON format. Added via 'Building Notices of Inventory Completion URL Dataset.ipynb.' <br/>
+**'fulltext_url'** - Type: str. Link to full-text data stored in XML or basic text format. Added via 'Building Notices of Inventory Completion URL Dataset.ipynb.'<br/>
+**'key'** - Type: str. Primary key. Begins with 'I_' to distiguish from Notices of Intent to Repatriate. Added via 'indexing.py.' Number following 'I_' no longer matches iloc, records have been removed.<br/>
+**'Institution'** - Type: str. Partially processed institutional information from 'Title.' Added via 'Cleaning inv_url Title.ipynb.' See notebook for outstanding issues.<br/>
+**'City'** - Type: str. Partially processed information on location of 'Institution,' as derived from 'Title.' Added via 'Cleaning inv_url Title.ipynb.' See notebook for outstanding issues.<br/>
+**'State'** - Type: str. U.S. state where 'Institution' is located, as derived from 'Title.'  Format: 2-letter abbreviation. Added via 'Cleaning inv_url Title.ipynb.'<br/>
 **'Correction'** - Type: int. Correction status, as derived from 'Title.' Value of 0 indicates that notice is not a correction. Value of 1 indicates a first correction. Value of 2 indicates a second correction. Has not been checked against Federal Register documents or MODS. Added via 'Cleaning inv_url Title.ipynb.'
 
 ### inventories_nps.csv
-Records of inventories for which notices have not been published in the Federal Register. Downloaded from https://www.nps.gov/subjects/nagpra/inventories-database.htm 2/13/20.
-**Rows: 14825**
+Records of inventories for which notices have not been published in the Federal Register. Downloaded from https://www.nps.gov/subjects/nagpra/inventories-database.htm 2/13/20.<br/>
+**Rows: 14825**<br/>
 **Columns: 'State', 'Museum or Federal Agency', 'MNI', 'AFO', 'CA', 'CUI', 'Geographic Area', 'County'**
 
 ### metadata.pckl.gz
-Pickled Pandas DataFrame compiled from inventory and repatriation files in 'datasets/downloaded_entries/metadata' 04/03/20. Three records have been removed because they were not relevant to NAGPRA (see 'Cleaning inv_url Title.ipynb').
-**Rows:**
+Pickled Pandas DataFrame compiled from inventory and repatriation files in 'datasets/downloaded_entries/metadata' 04/03/20. Three records have been removed because they were not relevant to NAGPRA (see 'Cleaning inv_url Title.ipynb').<br/>
+**Rows:**<br/>
 **Columns:**
 
 ### notices_of_repatriation.csv
-[description] [source/url] [download date]
-**Rows: 825**
+[description] [source/url] [download date]<br/>
+**Rows: 825**<br/>
 **Columns: 'Publication Date', 'Title', 'Link'**
 
 ### repatriation_urls
-Each row represents one Notice of Intent to Repatriate published in the Federal Register and logged in the National Park Service website. Built in 'Building Notices of Inventory Completion URL Dataset.ipynb' with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-intent-to-repatriate.htm on [date]. (Source URL: [url].) Unique keys created via 'indexing.py' by appending "R_" to the dataframe's index.
-**Rows: 815**
-**Columns:**
-**'Publication Date'** - Type: str. Original column from NPS. Format: m/d/yyy
-**'Title'** - Type: str. Original column from NPS. Approximate format: [Institution], [City], [State, 2-letter abbreviation]
-**'Link'** - Type: str. Original column from NPS. Link to Federal Register document.
-**'json_url'** - Type: str. Link to metadata in JSON format. Added via 'Building Notices of Inventory Completion URL Dataset.ipynb'. 
-**'fulltext_url'** - Type: str. Link to full-text data stored in XML or basic text format. Added via 'Building Notices of Inventory Completion URL Dataset.ipynb'. 
-**'key'** - Type: str. Primary key. Begins with 'R_' to distiguish from Notices of Inventory completion. Added via 'indexing.py.'
+Each row represents one Notice of Intent to Repatriate published in the Federal Register and logged in the National Park Service website. Built in 'Building Notices of Inventory Completion URL Dataset.ipynb' with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-intent-to-repatriate.htm on [date]. (Source URL: [url].) Unique keys created via 'indexing.py' by appending "R_" to the dataframe's index.<br/>
+**Rows: 815**<br/>
+**Columns:**<br/>
+**'Publication Date'** - Type: str. Original column from NPS. Format: m/d/yyy<br/>
+**'Title'** - Type: str. Original column from NPS. Approximate format: [Institution], [City], [State, 2-letter abbreviation]<br/>
+**'Link'** - Type: str. Original column from NPS. Link to Federal Register document.<br/>
+**'json_url'** - Type: str. Link to metadata in JSON format. Added via 'Building Notices of Inventory Completion URL Dataset.ipynb.'<br/>
+**'fulltext_url'** - Type: str. Link to full-text data stored in XML or basic text format. Added via 'Building Notices of Inventory Completion URL Dataset.ipynb.'<br/> 
+**'key'** - Type: str. Primary key. Begins with 'R_' to distiguish from Notices of Inventory completion. Added via 'indexing.py.'<br/>
 
 
 ## Scripts and Notebooks
