@@ -59,7 +59,7 @@ Each row represents one Notice of Inventory Completion published in the Federal 
 - **Institution**: Partially processed institutional information from Title. Added via Cleaning inv_url Title. See notebook for outstanding issues. Type: str<br/>
 - **City**: Partially processed information on location of Institution, as derived from Title. Added via Cleaning inv_url Title. See notebook for outstanding issues. Type: str<br/>
 - **State**: U.S. state where Institution is located, as derived from Title.  Format: 2-letter abbreviation. Added via Cleaning inv_url Title. Type: str<br/>
-- **Correction**: Correction status, as derived from Title. Value of 0 indicates that notice is not a correction. Value of 1 indicates a first correction. Value of 2 indicates a second correction. Has not been checked against Federal Register documents or MODS. Added via Cleaning inv_url Title. Type: str<br/>
+- **Correction**: Correction status, as derived from Title. Value of 0 indicates that notice is not a correction. Value of 1 indicates a first correction. Value of 2 indicates a second correction. Has not been checked against Federal Register documents or MODS. Added via Cleaning inv_url Title. Type: int<br/>
 
 ### repatriation_urls
 Each row represents one Notice of Intent to Repatriate published in the Federal Register and logged in the National Park Service website. Built using notices_of_repatriation.csv via Building Notices of Repatriation Dataset on 03/01/2020. Unique keys created via indexing by appending "R_" to the dataframes index.<br/>
