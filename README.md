@@ -20,7 +20,7 @@ Our pilot project examining over 4,000 public records on Native American cultura
 
 #### fulltext.csv
 Full-text of Notices of Inventory Completion and Notices of Intent to Repatriate, compiled from JSON files in datasets/downloaded_entries/fulltext/ via main on 04/03/20. Three records have been removed because they were not relevant to NAGPRA. See Cleaning inv_url Title for details on record removal. See downloading_fulltext for details on attribute construction. The string "Null" is the null value placeholder. <br/>
-**Rows: 3279**<br/>
+**Rows: 3279**
 - **messy_full**: Broad, catch-call category that contains all text present in notice, for all documents in the dataset. Except for key, all other attributes ought to be subsets of this one. Type: str<br/>
 - **agency1**: From AGENCY tag in XML documents. Will be "Null" in old basic text documents. Type: str<br/>
 - **sub_agency1**: From SUBAGY tag in XML documents. Will be "Null" in old basic text documents. Type: str<br/>
@@ -67,27 +67,27 @@ Holds 3282 individual JSON files with the metadata of each entry in inv_urls.csv
 
 #### inv_urls
 Each row represents one Notice of Inventory Completion published in the Federal Register and logged in the National Park Service website. Built in Building Notices of Inventory Completion URL Dataset with data accessed from https://www.nps.gov/subjects/nagpra/notices-of-inventory-completion.htm 2/13/20. (Source URL: https://www.nps.gov/common/uploads/sortable_dataset/nagpra/F8663396-E1B9-7C54-8C15C08D2D0702C4/F8663396-E1B9-7C54-8C15C08D2D0702C4.json.) Unique keys created via indexing by appending "I_" to the dataframes index. Three records have been removed because they were not relevant to NAGPRA (see Cleaning inv_url Title).<br/>
-**Rows: 2464**<br/>
-**Publication Date** - Type: str. Original column from NPS. Format: m/d/yyy<br/>
-**Title** - Type: str. Original column from NPS. Standard format: [Institution], [City], [State, 2-letter abbreviation]. Format for older records: "Notice of Inventory Completion for Native American Human Remains and Associated Funerary Objects from [Geographic region of provenance] in the Possession of [Institution in Possession], [City], [State, 2-letter abbreviation], and in the Control of [Controlling Institution]"<br/>
-**Link** - Type: str. Original column from NPS. Link to Federal Register document.<br/>
-**json_url** - Type: str. Link to metadata in JSON format. Added via Building Notices of Inventory Completion URL Dataset. <br/>
-**fulltext_url** - Type: str. Link to full-text data stored in XML or basic text format. Added via Building Notices of Inventory Completion URL Dataset.<br/>
-**key** - Type: str. Primary key. Begins with "I_" to distiguish from Notices of Intent to Repatriate. Added via indexing. Number following "I_" no longer matches iloc, because records have been removed.<br/>
-**Institution** - Type: str. Partially processed institutional information from Title. Added via Cleaning inv_url Title. See notebook for outstanding issues.<br/>
-**City** - Type: str. Partially processed information on location of Institution, as derived from Title. Added via Cleaning inv_url Title. See notebook for outstanding issues.<br/>
-**State** - Type: str. U.S. state where Institution is located, as derived from Title.  Format: 2-letter abbreviation. Added via Cleaning inv_url Title.<br/>
-**Correction** - Type: int. Correction status, as derived from Title. Value of 0 indicates that notice is not a correction. Value of 1 indicates a first correction. Value of 2 indicates a second correction. Has not been checked against Federal Register documents or MODS. Added via Cleaning inv_url Title.<br/>
+**Rows: 2464**
+- **Publication Date**: Original column from NPS. Format: m/d/yyyy, Type: str<br/>
+- **Title**: Original column from NPS. Standard format: [Institution], [City], [State, 2-letter abbreviation]. Format for older records: "Notice of Inventory Completion for Native American Human Remains and Associated Funerary Objects from [Geographic region of provenance] in the Possession of [Institution in Possession], [City], [State, 2-letter abbreviation], and in the Control of [Controlling Institution]," Type: str<br/>
+- **Link**: Original column from NPS. Link to Federal Register document. Type: str<br/>
+- **json_url**: Link to metadata in JSON format. Added via Building Notices of Inventory Completion URL Dataset. Type: str<br/>
+- **fulltext_url**: Link to full-text data stored in XML or basic text format. Added via Building Notices of Inventory Completion URL Dataset. Type: str<br/>
+- **key**: Primary key. Begins with "I_" to distiguish from Notices of Intent to Repatriate. Added via indexing. Number following "I_" no longer matches iloc, because records have been removed. Type: str<br/>
+- **Institution**: Partially processed institutional information from Title. Added via Cleaning inv_url Title. See notebook for outstanding issues. Type: str<br/>
+- **City**: Partially processed information on location of Institution, as derived from Title. Added via Cleaning inv_url Title. See notebook for outstanding issues. Type: str<br/>
+- **State**: U.S. state where Institution is located, as derived from Title.  Format: 2-letter abbreviation. Added via Cleaning inv_url Title. Type: str<br/>
+- **Correction**: Correction status, as derived from Title. Value of 0 indicates that notice is not a correction. Value of 1 indicates a first correction. Value of 2 indicates a second correction. Has not been checked against Federal Register documents or MODS. Added via Cleaning inv_url Title. Type: str<br/>
 
 #### repatriation_urls
 Each row represents one Notice of Intent to Repatriate published in the Federal Register and logged in the National Park Service website. Built using notices_of_repatriation.csv via Building Notices of Repatriation Dataset on 03/01/2020. Unique keys created via indexing by appending "R_" to the dataframes index.<br/>
-**Rows: 815**<br/>
-**Publication Date** - Type: str. Original column from NPS. Format: m/d/yyy<br/>
-**Title** - Type: str. Original column from NPS. Approximate format: [Institution], [City], [State, 2-letter abbreviation]<br/>
-**Link** - Type: str. Original column from NPS. Link to Federal Register document.<br/>
-**json_url** - Type: str. Link to metadata in JSON format. Added via Building Notices of Inventory Completion URL Dataset.<br/>
-**fulltext_url** - Type: str. Link to full-text data stored in XML or basic text format. Added via Building Notices of Inventory Completion URL Dataset.<br/> 
-**key** - Type: str. Primary key. Begins with "R_" to distiguish from Notices of Inventory completion. Added via indexing.<br/>
+**Rows: 815**
+- **Publication Date**: Original column from NPS. Format: m/d/yyyy, Type: str<br/>
+- **Title**: Original column from NPS. Approximate format: [Institution], [City], [State, 2-letter abbreviation], Type: str<br/>
+- **Link**: Original column from NPS. Link to Federal Register document. Type: str<br/>
+- **json_url**: Link to metadata in JSON format. Added via Building Notices of Inventory Completion URL Dataset. Type: str<br/>
+- **fulltext_url**: Link to full-text data stored in XML or basic text format. Added via Building Notices of Inventory Completion URL Dataset. Type: str<br/> 
+- **key**: Primary key. Begins with "R_" to distiguish from Notices of Inventory completion. Added via indexing. Type: str<br/>
 
 #### notices_of_repatriation.csv
 Downloaded from https://www.nps.gov/subjects/nagpra/notices-of-intent-to-repatriate.htm 03/01/2020.<br/>
@@ -102,7 +102,7 @@ Records of inventories for which notices have not been published in the Federal 
 #### fedreg_notices_of_inventory.csv
 Notices of Inventory Completion, as downloaded directly from the Federal Register. Truncated; does not contain all records. Details in Building Notices of Inventory Completion URL Dataset. Downloaded from https://www.federalregister.gov/documents/search?conditions%5Bagencies%5D%5B%5D=national-park-service&conditions%5Bterm%5D=%22Inventory+Completion%22&conditions%5Btype%5D%5B%5D=NOTICE on 2/13/20.<br/>
 **Rows: 1000**<br/>
-**Columns:title, type, agency_names, abstract, document_number, html_url, pdf_url, publication_date**<br/><br/>
+**Columns: title, type, agency_names, abstract, document_number, html_url, pdf_url, publication_date**<br/><br/>
 
 
 
