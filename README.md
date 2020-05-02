@@ -31,40 +31,40 @@ Our pilot project examining over 4,000 public records on Native American cultura
 ## Scripts and Notebooks
 
 - #### Controlled Vocabulary Text Mining.ipynb
-Get document frequency, context samples, and temporal plots for controlled vocabulary items from Jane. Preliminary stemming analysis of "unidentifiable human remains."
+   Get document frequency, context samples, and temporal plots for controlled vocabulary items from Jane. Preliminary stemming analysis of "unidentifiable human remains."
 
 - #### Cleaning inv_url Title.ipynb
-Attemps to split inv_urls.csv Title into Institution, City, and State. Three documents dropped from dataset because they are not related to NAGPRA. Cleaned dataset saved. Outstanding issues discussed at end of notebook.
+   Attemps to split inv_urls.csv Title into Institution, City, and State. Three documents dropped from dataset because they are not related to NAGPRA. Cleaned dataset saved. Outstanding issues discussed at end of notebook.
 
 - #### Data_Profiling_and_Cleaning.ipynb
-Basis of Repeated_Values_Report.pdf. Runs Pandas Profiling reports on fulltext.pckl.gz and metadata.pckl.gz. Explores corrections and corrections_of columns. Cleans action column of metadata and rewrites cleaned version. Detailed investigation into recycled text.
+   Basis of Repeated_Values_Report.pdf. Runs Pandas Profiling reports on fulltext.pckl.gz and metadata.pckl.gz. Explores corrections and corrections_of columns. Cleans action column of metadata and rewrites cleaned version. Detailed investigation into recycled text.
 
 - #### main.py
-Downloads full-text and metadata, saves as individual JSON files. Collects individual JSON files into two dataframes. For downloading, use the option "--dataset" and pass either "inventory" or "repatriation" as an argument. Main will use downloading_fulltext to open, parse, and save the pages at the URLs stored in the fulltext_url column in either inv_urls.csv or repatriation_urls.csv. The script will also use downloading_metadata to open and save the JSON files located at the URLs stored in the json_url column in either inv_urls.csv or repatriation_urls.csv. Downloads are performed in paralell with multiprocessing, and results are stored as individual JSON files in datasets/downloaded_entries/. The keys assigned by indexing.py are preserved. For collecting the individual JSON files, use the option "--type" and pass either "fulltext" or "metadata" as an argument. Main will traverse either datasets/downloaded_entries/fulltext or datasets/downloaded_entries/metadata, opening each JSON file and collecting them into a single dataframe. Results are saved as either metadata.pckl.gz or fulltext.pckl.gz.
+   Downloads full-text and metadata, saves as individual JSON files. Collects individual JSON files into two dataframes. For downloading, use the option "--dataset" and pass either "inventory" or "repatriation" as an argument. Main will use downloading_fulltext to open, parse, and save the pages at the URLs stored in the fulltext_url column in either inv_urls.csv or repatriation_urls.csv. The script will also use downloading_metadata to open and save the JSON files located at the URLs stored in the json_url column in either inv_urls.csv or repatriation_urls.csv. Downloads are performed in paralell with multiprocessing, and results are stored as individual JSON files in datasets/downloaded_entries/. The keys assigned by indexing.py are preserved. For collecting the individual JSON files, use the option "--type" and pass either "fulltext" or "metadata" as an argument. Main will traverse either datasets/downloaded_entries/fulltext or datasets/downloaded_entries/metadata, opening each JSON file and collecting them into a single dataframe. Results are saved as either metadata.pckl.gz or fulltext.pckl.gz.
 
 - #### Building Notices of Inventory Completion URL Dataset.ipynb 
-Builds a dataframe with the 2467 records in the Notices of Inventory Completion table on the National Park Service website, accessed 2/13/20. Adds columns for JSON and full-text URLs by parsing the HTML of each Federal Register document page. The final result is saved as inv_urls.csv.
+   Builds a dataframe with the 2467 records in the Notices of Inventory Completion table on the National Park Service website, accessed 2/13/20. Adds columns for JSON and full-text URLs by parsing the HTML of each Federal Register document page. The final result is saved as inv_urls.csv.
 
 - #### Building Notices Of Repatriation Dataset.ipynb 
-Builds a dataframe with the 815 records in notices_of_repatriation.csv. Adds columns for JSON and full-text URLs by parsing the HTML of each Federal Register document page. The final result is saved as repatriation_urls.csv.
+   Builds a dataframe with the 815 records in notices_of_repatriation.csv. Adds columns for JSON and full-text URLs by parsing the HTML of each Federal Register document page. The final result is saved as repatriation_urls.csv.
 
 - #### downloading_fulltext.py 
-Takes in a URL and a key, and saves a JSON file with the full-text in datasets/downloaded_entries/fulltext/.
+   Takes in a URL and a key, and saves a JSON file with the full-text in datasets/downloaded_entries/fulltext/.
 
 - #### downloading_metadata.py 
-Takes in a URL and a key, and saves a JSON file with the metadata in datasets/downloaded_entries/metadata/.
+   Takes in a URL and a key, and saves a JSON file with the metadata in datasets/downloaded_entries/metadata/.
 
 - #### indexing.py 
-Takes the index of inv_urls.csv, appends each entry with "I_" and saves this key as a new column called key. The resulting dataframe is saved to inv_urls.csv. It does the same to repatriation_urls.csv using "R_" as the prefix for the key.
+   Takes the index of inv_urls.csv, appends each entry with "I_" and saves this key as a new column called key. The resulting dataframe is saved to inv_urls.csv. It does the same to repatriation_urls.csv using "R_" as the prefix for the key.
 
 - #### data_retrieval.py
-Takes in a URL and returns the page's HTML.
+   Takes in a URL and returns the page's HTML.
 
 - #### urlgetter.py
-Parses HTML to return URLs of interest.
+   Parses HTML to return URLs of interest.
 
 - #### json keys.ipynb
-Loads sample notices via Federal Register API and explores metadata keys.
+   Loads sample notices via Federal Register API and explores metadata keys.
 
 
 ## Datasets
