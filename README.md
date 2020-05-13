@@ -18,6 +18,9 @@ Our pilot project examining over 4,000 public records on Native American cultura
 
 ## Results and Findings
 
+- #### controlled_vocab_results.pdf
+   Table with document frequency and context samples for controlled vocabulary items from Jane.
+   
 - #### NAGPRA Database Schema.pdf
    Map of NAGPRA databases.
 
@@ -26,6 +29,12 @@ Our pilot project examining over 4,000 public records on Native American cultura
 
 - #### Repeated_Values_Report.pdf
    Report on unexpected text recycling in Notices of Inventory Completion and Notices of Intent to Repatriate.
+
+- #### unident_results.pdf
+   Table with preliminary stemming analysis of "unidentifiable human remains."
+   
+- #### vocab_over_time.png
+   Temporal plots for controlled vocabulary items from Jane. Shows how document frequencies change over time.
 
 
 ## Scripts and Notebooks
