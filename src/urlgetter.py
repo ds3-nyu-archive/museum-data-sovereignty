@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
 from bs4 import BeautifulSoup
-#import sys
-#html_page_source=sys.argv[1]
 
 def get_urls (html):
     '''
