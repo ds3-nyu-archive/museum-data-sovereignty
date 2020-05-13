@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import requests
 
 def open_url (url):

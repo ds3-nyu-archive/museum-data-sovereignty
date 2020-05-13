@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import json
 import pathlib
 from data_retrieval import open_url
