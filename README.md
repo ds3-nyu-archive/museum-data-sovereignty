@@ -18,7 +18,7 @@ Our pilot project examining over 4,000 public records on Native American cultura
 
 ## Results and Findings
 
-- #### Museum-Data-Sovereignty-Poster.pdf
+- #### Indigenous_Data_Sovereignty_Poster.pdf
    Presentation poster summarizing project.
 
 - #### Repeated_Values_Report.pdf
